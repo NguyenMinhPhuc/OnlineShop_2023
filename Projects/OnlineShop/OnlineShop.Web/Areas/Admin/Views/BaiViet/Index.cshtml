@@ -1,0 +1,57 @@
+﻿@model IEnumerable<OnlineShop.Model.EF.BaiViet>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+
+    @using (Html.BeginForm("Index","BaiViet",FormMethod.Get))
+    {
+        <p>
+            Title: @Html.TextBox("searchString")
+
+
+            ---Chu đề: @Html.DropDownList("MaChuDe", "All") <input type="submit" value="Tìm kiếm" />
+        </p>
+    }
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NoiDungBaiViet)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaChuDe)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsDelete)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NoiDungBaiViet)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaChuDe)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsDelete)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MaBaiViet }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MaBaiViet }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MaBaiViet })
+        </td>
+    </tr>
+}
+
+</table>
