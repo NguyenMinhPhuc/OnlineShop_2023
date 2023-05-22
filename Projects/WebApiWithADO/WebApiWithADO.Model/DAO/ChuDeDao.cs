@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -61,9 +62,36 @@ namespace WebApiWithADO.Model.DAO
         }
         //2. Insert
 
+        public int InsertChuDe(ref string err, int maChuDe, string tenChuDe,string moTa)
+        {
+            SqlParameter[] sqlParameters = new SqlParameter[]
+            {
+                new SqlParameter("@MaChuDe",maChuDe),
+                new SqlParameter("@TenChuDe",tenChuDe),
+                new SqlParameter("@MoTa",moTa)
+            };
+            return db.MyExcuteNonQuery(ref err, "PSP_ChuDe_InsertAndUpdate", CommandType.StoredProcedure, sqlParameters);
+        }
         //3. Update
-
+        public int UpdateChuDe(ref string err, int maChuDe, string tenChuDe, string moTa)
+        {
+            SqlParameter[] sqlParameters = new SqlParameter[]
+            {
+                new SqlParameter("@MaChuDe",maChuDe),
+                new SqlParameter("@TenChuDe",tenChuDe),
+                new SqlParameter("@MoTa",moTa)
+            };
+            return db.MyExcuteNonQuery(ref err, "PSP_ChuDe_InsertAndUpdate", CommandType.StoredProcedure, sqlParameters);
+        }
         //4. Delete
-
+        public int DeleteChuDe(ref string err, int maChuDe)
+        {
+            SqlParameter[] sqlParameters = new SqlParameter[]
+            {
+                new SqlParameter("@MaChuDe",maChuDe)
+               
+            };
+            return db.MyExcuteNonQuery(ref err, "PSP_ChuDe_Delete", CommandType.StoredProcedure, sqlParameters);
+        }
     }
 }
