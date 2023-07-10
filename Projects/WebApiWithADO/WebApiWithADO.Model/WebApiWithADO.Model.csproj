@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="DAO\ChuDeDao.cs" />
     <Compile Include="Database.cs" />
+    <Compile Include="EF\BaiViet.cs" />
     <Compile Include="EF\ChuDe.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
